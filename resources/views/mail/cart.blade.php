@@ -6,7 +6,7 @@
             <div>
                 <span style="margin-bottom:10px;display:block">Xin chào {{ $fullname }}</span>
                 <p>Rất cảm ơn quý khách đã tin tưởng và lựa chọn dịch vụ sản phẩm tại của hàng <strong
-                        style="color:#ad0000">Unimart</strong> của chúng tôi.</p>
+                        style="color:#ad0000">Cityzens</strong> của chúng tôi.</p>
                 <span style="margin-bottom:10px;display:block">Chi tiết đơn hàng:</span>
                 <table style="width:70%;text-align:center">
                     <thead>

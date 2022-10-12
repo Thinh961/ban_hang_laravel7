@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>UNIMART STORE</title>
+    <title>CITYZENS STORE</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/bootstrap/bootstrap-theme.min.css') }}" rel="stylesheet" type="text/css" />
