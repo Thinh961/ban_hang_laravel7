@@ -14,7 +14,7 @@ use App\Product;
                 @endforeach
             </div>
         </div>
-        <div class="section" id="support-wp">
+        {{-- <div class="section" id="support-wp">
             <div class="section-detail">
                 <ul class="list-item clearfix">
                     <li>
@@ -54,7 +54,7 @@ use App\Product;
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> --}}
         @if ($list_feature_product->count() > 0)
             <div class="section" id="feature-product-wp">
                 <div class="section-head">

@@ -49,7 +49,7 @@
                                         <td>
                                             <input type="number" data-url="{{ Route('cart.update') }}"
                                                 data-rowId="{{ $item->rowId }}" name="num-order"
-                                                value="{{ $item->qty }}" min="1" max="4" data-qty="{{$item->qty}}" class="num-order" id="num-order">
+                                                value="{{ $item->qty }}" min="1" data-qty="{{$item->qty}}" class="num-order" id="num-order">
                                         </td>
                                         <td class="product-{{ $item->rowId }}">
                                             {{ currency_format($item->total, '.đ') }}</td>

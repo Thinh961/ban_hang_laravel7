@@ -143,37 +143,5 @@ return [
                 'route' => 'admin.user.index'
             ],
         ],
-    ],
-    [
-        'label' => 'Vai trò',
-        'route' => 'admin.role.index',
-        'icon' => 'fab fa-android',
-        'module_active' => 'role',
-        'items' => [
-            [
-                'label' => 'Thêm mới',
-                'route' => 'admin.role.create',
-            ],
-            [
-                'label' => 'Danh sách',
-                'route' => 'admin.role.index'
-            ],
-        ],
-    ],
-    [
-        'label' => 'Quyền',
-        'route' => 'admin.permission.index',
-        'icon' => 'fab fa-paypal',
-        'module_active' => 'permission',
-        'items' => [
-            [
-                'label' => 'Thêm mới',
-                'route' => 'admin.permission.index',
-            ],
-            [
-                'label' => 'Danh sách',
-                'route' => 'admin.permission.index'
-            ],
-        ],
-    ],
+    ]
 ];

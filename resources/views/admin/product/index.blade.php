@@ -7,8 +7,8 @@
                 <h5 class="m-0 ">Danh sách sản phẩm</h5>
                 <div class="form-search form-inline">
                     <form action="{{ Route('admin.product.index') }}">
-                        <input type="" class="form-control form-search" name="key" value="{{ request()->input('key') }}"
-                            placeholder="Tìm kiếm">
+                        <input type="" class="form-control form-search" name="key"
+                            value="{{ request()->input('key') }}" placeholder="Tìm kiếm">
                         <input type="submit" name="btn-search" value="Tìm kiếm" class="btn btn-primary">
                     </form>
                 </div>
@@ -19,43 +19,39 @@
                 </div>
             @endif
             <div class="card-body">
-                @can('admin.product.action')
-                    <div class="analytic">
-                        <a href="{{ Route('admin.product.index') }}" class="text-primary">Tất cả<span
-                                class="text-muted">({{ $count[0] }})</span></a>
-                        <a href="{{ str_replace(request()->page, 1, request()->fullUrlWithQuery(['status' => 'publish'])) }}"
-                            class="text-primary">Đang hoạt
-                            động<span class="text-muted">({{ $count[1] }})</span></a>
-                        <a href="{{ str_replace(request()->page, 1, request()->fullUrlWithQuery(['status' => 'pending'])) }}"
-                            class="text-primary">Chờ
-                            duyệt<span class="text-muted">({{ $count[2] }})</span></a>
-                        <a href="{{ str_replace(request()->page, 1, request()->fullUrlWithQuery(['status' => 'trash'])) }}"
-                            class="text-primary">Thùng
-                            rác<span class="text-muted">({{ $count[3] }})</span></a>
-                        <a href="{{ str_replace(request()->page, 1, request()->fullUrlWithQuery(['status' => 'out-of-stock'])) }}"
-                            class="text-primary">Hết hàng<span class="text-muted">({{ $count[4] }})</span></a>
-                    </div>
-                    <form action="{{ url('admin/product/action') }}" method="">
+                <div class="analytic">
+                    <a href="{{ Route('admin.product.index') }}" class="text-primary">Tất cả<span
+                            class="text-muted">({{ $count[0] }})</span></a>
+                    <a href="{{ str_replace(request()->page, 1, request()->fullUrlWithQuery(['status' => 'publish'])) }}"
+                        class="text-primary">Đang hoạt
+                        động<span class="text-muted">({{ $count[1] }})</span></a>
+                    <a href="{{ str_replace(request()->page, 1, request()->fullUrlWithQuery(['status' => 'pending'])) }}"
+                        class="text-primary">Chờ
+                        duyệt<span class="text-muted">({{ $count[2] }})</span></a>
+                    <a href="{{ str_replace(request()->page, 1, request()->fullUrlWithQuery(['status' => 'trash'])) }}"
+                        class="text-primary">Thùng
+                        rác<span class="text-muted">({{ $count[3] }})</span></a>
+                    <a href="{{ str_replace(request()->page, 1, request()->fullUrlWithQuery(['status' => 'out-of-stock'])) }}"
+                        class="text-primary">Hết hàng<span class="text-muted">({{ $count[4] }})</span></a>
+                </div>
+                <form action="{{ url('admin/product/action') }}" method="">
 
-                        <div class="form-action form-inline py-3">
-                            <select class="form-control mr-1" id="" name="action">
-                                <option value="">Chọn</option>
-                                @foreach ($list_act as $k => $item)
-                                    <option value="{{ $k }}">{{ $item }}</option>
-                                @endforeach
-                            </select>
-                            <input type="submit" name="btn-search" value="Áp dụng" class="btn btn-primary">
-                        </div>
-                    @endcan
+                    <div class="form-action form-inline py-3">
+                        <select class="form-control mr-1" id="" name="action">
+                            <option value="">Chọn</option>
+                            @foreach ($list_act as $k => $item)
+                                <option value="{{ $k }}">{{ $item }}</option>
+                            @endforeach
+                        </select>
+                        <input type="submit" name="btn-search" value="Áp dụng" class="btn btn-primary">
+                    </div>
 
                     <table class="table table-striped table-checkall">
                         <thead>
                             <tr>
-                                @can('admin.product.action')
-                                    <th scope="col">
-                                        <input name="checkall" type="checkbox">
-                                    </th>
-                                @endcan
+                                <th scope="col">
+                                    <input name="checkall" type="checkbox">
+                                </th>
                                 <th scope="col">#</th>
                                 <th scope="col">Ảnh</th>
                                 <th scope="col" style="width:300px">Tên sản phẩm</th>
@@ -63,9 +59,7 @@
                                 <th scope="col">Danh mục</th>
                                 <th scope="col">Ngày tạo</th>
                                 <th scope="col">Trạng thái</th>
-                                 @canany(['admin.product.edit', 'admin.product.destroy'])
                                 <th scope="col">Tác vụ</th>
-                                @endcanany
                             </tr>
                         </thead>
                         <tbody>
@@ -78,11 +72,9 @@
                                         $t++;
                                     @endphp
                                     <tr class="">
-                                        @can('admin.product.action')
-                                            <td>
-                                                <input type="checkbox" name="list_check[]" value="{{ $item->id }}">
-                                            </td>
-                                        @endcan
+                                        <td>
+                                            <input type="checkbox" name="list_check[]" value="{{ $item->id }}">
+                                        </td>
                                         <td>{{ $t }}</td>
                                         <td style="width:130px"><img src="{{ Asset($item->product_thumb) }}"
                                                 class="img-fluid" alt=""></td>
@@ -98,27 +90,23 @@
                                                 class="badge badge-{{ get_tracking_css($tracking) }}">{{ get_tracking($tracking) }}</span>
                                         </td>
                                         <td>
-                                            @can('admin.product.edit')
-                                                <a href="{{ Route('admin.product.edit', $item->id) }}"
-                                                    class="btn btn-success btn-sm rounded-0 text-white" type="button"
-                                                    data-toggle="tooltip" data-placement="top" title="Edit"><i
-                                                        class="fa fa-edit"></i></a>
-                                            @endcan
-                                            @can('admin.product.destroy')
-                                                @if (Request::get('status') === 'trash')
-                                                    <a href="{{ Route('admin.product.delete', $item->id) }}"
-                                                        class="btn btn-danger btn-sm rounded-0 text-white"
-                                                        onclick="return confirm('Bạn có chắc chắn muốn xóa')" type="button"
-                                                        data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                            class="fa fa-trash"></i></a>
-                                                @else
-                                                    <a href="{{ Route('admin.product.destroy', $item->id) }}"
-                                                        class="btn btn-danger btn-sm rounded-0 text-white"
-                                                        onclick="return confirm('Bạn có chắc chắn muốn xóa')" type="button"
-                                                        data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                            class="fa fa-trash"></i></a>
-                                                @endif
-                                            @endcan
+                                            <a href="{{ Route('admin.product.edit', $item->id) }}"
+                                                class="btn btn-success btn-sm rounded-0 text-white" type="button"
+                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                    class="fa fa-edit"></i></a>
+                                            @if (Request::get('status') === 'trash')
+                                                <a href="{{ Route('admin.product.delete', $item->id) }}"
+                                                    class="btn btn-danger btn-sm rounded-0 text-white"
+                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa')" type="button"
+                                                    data-toggle="tooltip" data-placement="top" title="Delete"><i
+                                                        class="fa fa-trash"></i></a>
+                                            @else
+                                                <a href="{{ Route('admin.product.destroy', $item->id) }}"
+                                                    class="btn btn-danger btn-sm rounded-0 text-white"
+                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa')" type="button"
+                                                    data-toggle="tooltip" data-placement="top" title="Delete"><i
+                                                        class="fa fa-trash"></i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

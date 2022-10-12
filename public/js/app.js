@@ -24,11 +24,6 @@ $(document).ready(function () {
         var url = $(this).attr("data-url");
         var rowId = $(this).attr("data-rowId");
         var qty = $(this).val();
-        if (qty >= 4) {
-            qty = 4;
-            $(this).val(qty);
-            toastr.warning('Mỗi sản phẩm chỉ được đặt tối đa là 4',{timeOut: 1000});
-        }
         var data = { url: url, rowId: rowId, qty: qty };
         $.ajax({
             url: url,

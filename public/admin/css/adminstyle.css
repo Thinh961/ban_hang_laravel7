@@ -1,5 +1,5 @@
 a {
-    color: #787272;
+    color: rgb(0, 0, 0);
 }
 
 a:hover {
@@ -101,13 +101,17 @@ ul#sidebar-menu * {
     position: relative;
 }
 
+.nav-link a {
+    color: #fff;
+}
+
 .nav-link.active>a,
 .nav-link:hover>li>a {
-    color: #0061f2;
+    color: #ff9800;
 }
 
 .nav-link>li>a>i {
-    color: #787272;
+    color: #fff;
     font-size: 18px;
 }
 
@@ -158,4 +162,15 @@ ul#sidebar-menu * {
     top: -1px;
     right: -5px;
     color: #8c8c8c;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #000!important;
+    border-color: #000!important;
+}
+
+.page-item .page-link {
+    color: #000;
 }

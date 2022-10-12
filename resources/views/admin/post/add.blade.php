@@ -18,7 +18,8 @@
                     </div>
                     <div class="form-group">
                         <label for="slug">Slug</label>
-                        <input class="form-control" type="text" name="slug" placeholder="Không bắt buộc" id="slug">
+                        <input class="form-control" type="text" name="slug" placeholder="Không bắt buộc"
+                            id="slug">
                     </div>
                     <div class="form-group">
                         <label for="content">Nội dung bài viết</label>
@@ -50,23 +51,22 @@
                     <div class="form-group">
                         <label for="">Trạng thái</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2" value="publish">
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2"
+                                value="publish">
                             <label class="form-check-label" for="exampleRadios2">
                                 Công khai
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="pending"
-                                checked>
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1"
+                                value="pending" checked>
                             <label class="form-check-label" for="exampleRadios1">
                                 Chờ duyệt
                             </label>
                         </div>
 
                     </div>
-                    @can('admin.post.create')
-                        <button type="submit" value="Thêm mới" class="btn btn-primary">Thêm mới</button>
-                    @endcan
+                    <button type="submit" value="Thêm mới" class="btn btn-primary">Thêm mới</button>
                 </form>
             </div>
         </div>

@@ -16,7 +16,8 @@
                     @csrf
                     <div class="form-group">
                         <label for="name">Họ và tên</label>
-                        <input class="form-control" type="text" name="name" value="{{ $user->name }}" id="name">
+                        <input class="form-control" type="text" name="name" value="{{ $user->name }}"
+                            id="name">
                         @error('name')
                             <small class="text-danger"> {{ $message }}</small>
                         @enderror
@@ -37,20 +38,7 @@
                         <label for="email">Xác nhận mật khẩu</label>
                         <input class="form-control" type="password" name="password_confirmation" id="email">
                     </div>
-                    @can('is-admin')
-                        <div class="form-group">
-                            <label for="">Nhóm quyền</label>
-                            <select class="role-user form-control" name="role_id[]" multiple="multiple">
-                                @foreach ($roles as $item)
-                                    <option {{ $rolesChecked->contains('id', $item->id) ? 'selected' : '' }}
-                                        value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    @endcan
-                    @can('admin.user.update')
-                        <button type="submit" name="btn_update" class="btn btn-primary">Cập nhật</button>
-                    @endcan
+                    <button type="submit" name="btn_update" class="btn btn-primary">Cập nhật</button>
                 </form>
             </div>
         </div>

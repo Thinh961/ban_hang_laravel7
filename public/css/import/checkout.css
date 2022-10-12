@@ -97,10 +97,10 @@
     font-weight: normal;
     border: none;
     outline: none;
-    background: #3f5da6;
+    background: #000;
     color: #fff;
 }
-.place-order-wp input[type="submit"]:hover{ background: #2b478c;}
+.place-order-wp input[type="submit"]:hover{ background: #6f7070;}
 .order-total .total-price{
     font-family: 'Roboto Medium';
     font-weight: normal;

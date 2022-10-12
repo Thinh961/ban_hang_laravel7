@@ -93,55 +93,9 @@ class CartController extends Controller
                     'price' => $item->price
                 ]);
             }
-            $email = $request->input('email');
-            $data = [
-                'title' => '[Unimart] Thư xác nhận mua hàng',
-                'content' => Cart::content(),
-                'code' => $orderCode,
-                "fullname" => $request->input('fullname'),
-                'total' => Cart::total()
-            ];
-            if ($email) {
-                Mail::to($email)->send(new MailCart($data));
-            }
             $info_order = Order::find($order_id);
             return $info_order;
         });
-        if ($info_order) {
-            //Thông báo realtime
-            $dataNotification = [
-                'id_order' => $info_order['id'],
-                'fullname' => $info_order['fullname'],
-            ];
-            // $users = Auth::user();
-            // if (!$users) {
-            $users = User::all();
-            // }
-            Notification::send($users, new OrderNotification($dataNotification));
-            $options = array(
-                'cluster' => 'ap1',
-                'encrypted' => true
-            );
-            $pusher = new Pusher(
-                env('PUSHER_APP_KEY'),
-                env('PUSHER_APP_SECRET'),
-                env('PUSHER_APP_ID'),
-                $options
-            );
-            $pusher->trigger('OrderNotificationEvent', 'order-notification', $dataNotification);
-            //Thông báo đến Slack
-            $text = "=====" . Date('d-m-Y H:i') . "=====" . "\n";
-            $text .= "THÔNG BÁO CÓ ĐƠN HÀNG MỚI" . "\n";
-            $text .= "Đơn hàng mới từ " . ucwords($request->input('fullname')) . " lúc: " . Date('d-m-Y H:i') . "\n";
-            $client = new Client();
-            $headers = [
-                'Content-Type'  => 'application/json'
-            ];
-            $client->request("POST", env("INCOMING_WEBHOOK"), [
-                'headers' => $headers,
-                'body' => "{text:'{$text}'}"
-            ])->getBody();
-        }
         Cart::destroy();
         return redirect(Route('cart.order.success', $info_order->orderCode));
     }
@@ -166,14 +120,6 @@ class CartController extends Controller
                 'qty' => $info_product->qty
             ]
         ]);
-        foreach (Cart::content() as $item) {
-            if ($item->qty > 4) {
-                $item->qty = 4;
-                Cart::update($item->rowId, $item->qty);
-                toastr()->warning('Mỗi sản phẩm chỉ được mua tối đa 4');
-                return redirect()->back();
-            }
-        };
         toastr()->success('Thêm giỏ hàng thành công');
         return redirect()->back();
     }

@@ -9,7 +9,7 @@
     <div class="container-fluid py-5">
         <div class="row">
             <div class="col">
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
                     <div class="card-header">ĐƠN HÀNG THÀNH CÔNG</div>
                     <div class="card-body">
                         <h5 class="card-title">{{ $count[0] }}</h5>
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
                     <div class="card-header">SỐ LƯỢNG SẢN PHẨM</div>
                     <div class="card-body">
                         <h5 class="card-title">{{ $count[5] }}</h5>
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">SLIDER</div>
                     <div class="card-body">
                         <h5 class="card-title">{{ $count[6] }}</h5>
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                     <div class="card-header">DOANH SỐ</div>
                     <div class="card-body">
                         <h5 class="card-title">{{ currency_format($sales, '.đ') }}</h5>
@@ -83,30 +83,7 @@
                 </div>
             </div>
         </div>
-        {{-- <form action="" class="chart mb-1 bg-white" data-url="{{ Route('admin.filter.revenue') }}" method="POST">
-            @csrf
-            <div class="row p-2">
-                <div class="col-2">
-                    <div class="form-group">
-                        <label for="from-date"><strong>Từ ngày:</strong></label>
-                        <input class="form-control" type="text" name="from_date" value="" id="from-date">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="form-group">
-                        <label for="to-date"><strong>Đến ngày:</strong></label>
-                        <input class="form-control" type="text" name="to_date" value="" id="to-date">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <button class="btn btn-primary filter-statistical" data-url="{{ Route('admin.chart') }}"
-                        style="margin-top:31px">Lọc</button>
-                </div>
-            </div>
-            <div id="myfirstchart" style="height: 250px"></div>
-        </form> --}}
-         @can('admin.order.index')
-                  <div class="card">
+        <div class="card">
             <div class="card-header font-weight-bold">
                 ĐƠN HÀNG MỚI
             </div>
@@ -121,9 +98,7 @@
                                 <th scope="col">Tổng tiền</th>
                                 <th scope="col">Trạng thái</th>
                                 <th scope="col">Thời gian</th>
-                                  @can('admin.order.edit')
                                 <th scope="col">Chi tiết</th>
-                                @endcan
                             </tr>
                         </thead>
                         <tbody>
@@ -138,7 +113,8 @@
                                     <th scope="row">{{ $t }}</th>
                                     <td>{{ $item->orderCode }}</td>
                                     <td>
-                                        <a href="{{Route('admin.customer.edit',$item->customer_id)}}" class="text-primary">{{ $item->fullname }}</a> <br>
+                                        <a href="{{ Route('admin.customer.edit', $item->customer_id) }}"
+                                            class="text-primary">{{ $item->fullname }}</a> <br>
                                         {{ $item->phone }}
                                     </td>
                                     <td>{{ currency_format($item->total, '.đ') }}</td>
@@ -146,12 +122,10 @@
                                             class="badge badge-{{ get_status_order_css($item->status) }}">{{ get_status_order($item->status) }}</span>
                                     </td>
                                     <td>{{ $item->created_at }}</td>
-                                     @can('admin.order.edit')
                                     <td>
                                         <a href="{{ Route('admin.order.edit', $item->id) }}" class="" type="button"
                                             data-toggle="tooltip" data-placement="top" title="Edit">Chi tiết</a>
                                     </td>
-                                    @endcan
                                 </tr>
                             @endforeach
                         </tbody>
@@ -162,10 +136,9 @@
                 <nav aria-label="Page navigation example">
                     {{ $list_order->links() }}
                 </nav>
-                
+
             </div>
-        </div>   
- @endcan
-        
+        </div>
+
     </div>
 @endsection

@@ -6,10 +6,10 @@
             <div class="section-detail">
                 <ul class="list-item clearfix">
                     <li>
-                        <a href="{{url('/')}}" title="">Trang chủ</a>
+                        <a href="{{ url('/') }}" title="">Trang chủ</a>
                     </li>
                     <li>
-                        <a href="{{Route('post.list')}}" title="">Tin tức</a>
+                        <a href="{{ Route('post.list') }}" title="">Tin tức</a>
                     </li>
                 </ul>
             </div>
@@ -27,7 +27,8 @@
                                     <img src="{{ asset($item->post_thumb) }}" alt="">
                                 </a>
                                 <div class="info fl-right">
-                                    <a href="{{ Route('post.list', $item->post_cat_id) }}">{{ $item->post_cat->post_cat_title }}</a>
+                                    <a
+                                        href="{{ Route('post.list', $item->post_cat_id) }}">{{ $item->post_cat->post_cat_title }}</a>
                                     <a href="{{ Route('post.detail', [$item->slug, $item->id]) }}" title=""
                                         class="title">{{ $item->post_title }}</a>
                                     <span class="create-date">{{ $item->created_at }}</span>
@@ -54,7 +55,7 @@
             @endif
 
         </div>
-  <nav aria-label="Page navigation example">
+        <nav aria-label="Page navigation example">
             {{ $list_post->links() }}
         </nav>
     </div>
@@ -82,7 +83,8 @@
                             $slug = create_slug($item->product_title);
                         @endphp
                         <li class="clearfix">
-                            <a href="{{ Route('product.detail', [$slug, $item->id]) }}" title="" class="thumb fl-left">
+                            <a href="{{ Route('product.detail', [$slug, $item->id]) }}" title=""
+                                class="thumb fl-left">
                                 <img src="{{ asset($item->product_thumb) }}" alt="">
                             </a>
                             <div class="info fl-right">
@@ -99,13 +101,4 @@
             </div>
         @endif
     </div>
-    <div class="section" id="banner-wp">
-        <div class="section-detail">
-            <a href="" title="" class="thumb">
-                <img src="{{ asset('images/banner.png') }}" alt="">
-            </a>
-        </div>
-    </div>
 @endsection
-
-

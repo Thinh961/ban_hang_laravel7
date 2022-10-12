@@ -13,7 +13,7 @@
     display: block;
     color: #333;
     padding-left: 20px;
-    line-height: normal;
+    line-height: 15px;
 }
 #breadcrumb-wp .list-item li:first-child a:before {
     position: absolute;

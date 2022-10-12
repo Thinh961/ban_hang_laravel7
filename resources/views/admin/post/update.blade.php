@@ -34,8 +34,7 @@
                         <select class="form-control" name="post_cat_id" id="">
                             <option value="">Chọn danh mục</option>
                             @foreach ($list_post_cat as $item)
-                                <option {{ $post->post_cat_id == $item->id ? 'selected' : '' }}
-                                    value="{{ $item->id }}">
+                                <option {{ $post->post_cat_id == $item->id ? 'selected' : '' }} value="{{ $item->id }}">
                                     {{ str_repeat('|---', $item->level) . $item->post_cat_title }}</option>
                             @endforeach
                         </select>
@@ -55,7 +54,8 @@
                             <div class="col-8">
                                 <strong>Ảnh cũ</strong>
                                 <div class="old-img" style="width:150px">
-                                    <img src="{{ Asset($post->post_thumb) }}" alt="" class="img-fluid img-thumbnail">
+                                    <img src="{{ Asset($post->post_thumb) }}" alt=""
+                                        class="img-fluid img-thumbnail">
                                 </div>
                             </div>
                         </div>
@@ -78,9 +78,7 @@
                             </label>
                         </div>
                     </div>
-                    @can('admin.post.update')
-                        <button type="submit" value="Cập nhật" class="btn btn-primary">Cập nhật</button>
-                    @endcan
+                    <button type="submit" value="Cập nhật" class="btn btn-primary">Cập nhật</button>
                 </form>
             </div>
         </div>

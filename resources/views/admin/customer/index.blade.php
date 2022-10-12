@@ -24,9 +24,7 @@
                             <th scope="col">Khách hàng</th>
                             <th scope="col">SĐT</th>
                             <th scope="col">Email</th>
-                            @canany(['admin.customer.edit', 'admin.customer.destroy'])
                             <th scope="col">Tác vụ</th>
-                            @endcanany
                         </tr>
                     </thead>
                     <tbody>
@@ -46,19 +44,15 @@
                                     </td>
                                     <td>{{ $item->email }}</td>
                                     <td>
-                                        @can('admin.customer.edit')
-                                            <a href="{{ Route('admin.customer.edit', $item->id) }}"
-                                                class="btn btn-success btn-sm rounded-0 text-white" type="button"
-                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
-                                                    class="fa fa-edit"></i></a>
-                                        @endcan
-                                        @can('admin.customer.destroy')
-                                            <a href="{{ Route('admin.customer.destroy', $item->id) }}"
-                                                class="btn btn-danger btn-sm rounded-0 text-white"
-                                                onclick="return confirm('Bạn có chắc chắn muốn xóa')" type="button"
-                                                data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                    class="fa fa-trash"></i></a>
-                                        @endcan
+                                        <a href="{{ Route('admin.customer.edit', $item->id) }}"
+                                            class="btn btn-success btn-sm rounded-0 text-white" type="button"
+                                            data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                class="fa fa-edit"></i></a>
+                                        <a href="{{ Route('admin.customer.destroy', $item->id) }}"
+                                            class="btn btn-danger btn-sm rounded-0 text-white"
+                                            onclick="return confirm('Bạn có chắc chắn muốn xóa')" type="button"
+                                            data-toggle="tooltip" data-placement="top" title="Delete"><i
+                                                class="fa fa-trash"></i></a>
 
                                     </td>
                                 </tr>

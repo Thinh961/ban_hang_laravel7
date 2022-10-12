@@ -149,9 +149,7 @@
                             </label>
                         </div>
                     </div>
-                    @can('admin.product.update')
                         <button type="submit" name="btn_update" value="Cập nhật" class="btn btn-primary">Cập nhật</button>
-                    @endcan
                 </form>
             </div>
         </div>

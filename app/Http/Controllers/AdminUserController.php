@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -47,8 +46,7 @@ class AdminUserController extends Controller
 
     function add()
     {
-        $roles = Role::all();
-        return view('admin.user.add', compact('roles'));
+        return view('admin.user.add');
     }
 
     function delete($id)
@@ -64,9 +62,7 @@ class AdminUserController extends Controller
     function update($id)
     {
         $user = User::withTrashed()->where('id', $id)->first();
-        $roles = Role::all();
-        $rolesChecked = $user->roles;
-        return view('admin.user.update', compact('user', 'roles', 'rolesChecked'));
+        return view('admin.user.update', compact('user'));
     }
 
     function storeUpdate(Request $request, $id)
@@ -95,25 +91,13 @@ class AdminUserController extends Controller
             'name' => $request->input('name'),
             'password' => $password,
         ]);
-        $user = User::find($id);
-        $role_ids = $request->role_id;
-        $data = [];
-        if (empty($role_ids)) {
-            $role_ids = $user->roles;
-            foreach ($role_ids as $item) {
-                $data[] = $item->id;
-            }
-        } else {
-            $data = $role_ids;
-        }
-        $user->roles()->sync($data);
+
         return redirect()->back()->with('alert', 'Cập nhật thành công');
     }
 
     function store(Request $request)
     {
         if ($request->input('btn-add')) {
-
             $request->validate(
                 [
                     'name' => ['required', 'string', 'max:255'],
@@ -135,12 +119,11 @@ class AdminUserController extends Controller
                 ]
             );
             DB::transaction(function () use ($request) {
-                $user = User::create([
+                User::create([
                     'name' => $request->input('name'),
                     'email' => $request->input('email'),
                     'password' => Hash::make($request->input('password')),
                 ]);
-                $user->roles()->attach($request->role_id);
             });
             return redirect('admin/user/add')->with('alert', 'Thêm mới thành công');
         }

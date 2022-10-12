@@ -12,8 +12,7 @@
                 </div>
             @endif
             <div class="card-body">
-                <form action="{{ Route('admin.slider.update', $slider->id) }}" enctype="multipart/form-data"
-                    method="POST">
+                <form action="{{ Route('admin.slider.update', $slider->id) }}" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="name">Tiêu đề slider</label>
@@ -43,7 +42,8 @@
                             <div class="col-8">
                                 <strong>Ảnh cũ</strong>
                                 <div class="old-img" style="width:150px">
-                                    <img src="{{ Asset($slider->slider_thumb) }}" alt="" class="img-fluid img-thumbnail">
+                                    <img src="{{ Asset($slider->slider_thumb) }}" alt=""
+                                        class="img-fluid img-thumbnail">
                                 </div>
                             </div>
                         </div>
@@ -51,23 +51,21 @@
                     <div class="form-group">
                         <label for="">Trạng thái</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="pending"
-                                {{ $slider->status == 'pending' ? 'checked' : '' }}>
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1"
+                                value="pending" {{ $slider->status == 'pending' ? 'checked' : '' }}>
                             <label class="form-check-label" for="exampleRadios1">
                                 Chờ duyệt
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2" value="publish"
-                                {{ $slider->status == 'publish' ? 'checked' : '' }}>
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2"
+                                value="publish" {{ $slider->status == 'publish' ? 'checked' : '' }}>
                             <label class="form-check-label" for="exampleRadios2">
                                 Công khai
                             </label>
                         </div>
                     </div>
-                    @can('admin.slider.update')
-                        <button type="submit" class="btn btn-primary">Cập nhật</button>
-                    @endcan
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
                 </form>
             </div>
         </div>

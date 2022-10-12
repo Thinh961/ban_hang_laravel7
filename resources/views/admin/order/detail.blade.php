@@ -80,9 +80,7 @@
                                 <option class="bg-white text-dark" {{ $detail->status == 'cancel' ? 'selected' : '' }}
                                     value="cancel">Hủy</option>
                             </select>
-                            @can('admin.order.update')
                                 <input type="submit" class="btn btn-primary" value="Cập nhật đơn hàng">
-                            @endcan
                         </div>
                     </div>
                 </form>
