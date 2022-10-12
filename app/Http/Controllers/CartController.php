@@ -71,7 +71,7 @@ class CartController extends Controller
                 $customer_id = Customer::where('phone', '=', $request->input('phone'))->first()->id;
             }
 
-            $orderCode = "UNI-" . Str::upper(Str::random(11));
+            $orderCode = "CITYZENS-" . Str::upper(Str::random(11));
             $order_id = Order::create([
                 "fullname" => Str::title($request->input('fullname')),
                 "orderCode" => $orderCode,

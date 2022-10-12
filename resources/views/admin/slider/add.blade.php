@@ -40,17 +40,17 @@
                     <div class="form-group">
                         <label for="">Trạng thái</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1"
-                                value="pending" checked>
-                            <label class="form-check-label" for="exampleRadios1">
-                                Chờ duyệt
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2"
+                                value="publish" checked>
+                            <label class="form-check-label" for="exampleRadios2">
+                                Công khai
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2"
-                                value="publish">
-                            <label class="form-check-label" for="exampleRadios2">
-                                Công khai
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1"
+                                value="pending" >
+                            <label class="form-check-label" for="exampleRadios1">
+                                Chờ duyệt
                             </label>
                         </div>
                     </div>
