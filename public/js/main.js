@@ -91,13 +91,7 @@ $(document).ready(function () {
     var value = parseInt($("#num-order").attr("value"));
     $("#plus").click(function () {
         value++;
-        if (value > 4) {
-            value = 4;
-            toastr.warning('Mỗi sản phẩm chỉ được đặt tối đa là 4',{timeOut: 1000});
-            $("#num-order").attr("value", value);
-        } else {
-            $("#num-order").attr("value", value);
-        }
+        $("#num-order").attr("value", value);
         // update_href(value);
     });
     

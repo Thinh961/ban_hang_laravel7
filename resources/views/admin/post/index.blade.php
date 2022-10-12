@@ -6,8 +6,8 @@
                 <h5 class="m-0 ">Danh sách bài viết</h5>
                 <div class="form-search form-inline">
                     <form action="">
-                        <input type="" class="form-control form-search" name="key" value="{{ request()->input('key') }}"
-                            placeholder="Tìm kiếm">
+                        <input type="" class="form-control form-search" name="key"
+                            value="{{ request()->input('key') }}" placeholder="Tìm kiếm">
                         <input type="submit" name="btn-search" value="Tìm kiếm" class="btn btn-primary">
                     </form>
                 </div>
@@ -18,48 +18,42 @@
                 </div>
             @endif
             <div class="card-body">
-                @can('admin.post.action')
-                    <div class="analytic">
-                        <a href="{{ Route('admin.post.index') }}" class="text-primary">Tất cả<span
-                                class="text-muted">({{ $count[0] }})</span></a>
-                        <a href="{{ str_replace(request()->page, '', request()->fullUrlWithQuery(['status' => 'publish'])) }}"
-                            class="text-primary">Đang xuất
-                            bản<span class="text-muted">({{ $count[1] }})</span></a>
-                        <a href="{{ str_replace(request()->page, '', request()->fullUrlWithQuery(['status' => 'pending'])) }}"
-                            class="text-primary">Chờ
-                            duyệt<span class="text-muted">({{ $count[2] }})</span></a>
-                        <a href="{{ str_replace(request()->page, '', request()->fullUrlWithQuery(['status' => 'trash'])) }}"
-                            class="text-primary">Thùng
-                            rác<span class="text-muted">({{ $count[3] }})</span></a>
-                    </div>
-                    <form action="{{ url('admin/post/action') }}" method="">
+                <div class="analytic">
+                    <a href="{{ Route('admin.post.index') }}" class="text-primary">Tất cả<span
+                            class="text-muted">({{ $count[0] }})</span></a>
+                    <a href="{{ str_replace(request()->page, '', request()->fullUrlWithQuery(['status' => 'publish'])) }}"
+                        class="text-primary">Đang xuất
+                        bản<span class="text-muted">({{ $count[1] }})</span></a>
+                    <a href="{{ str_replace(request()->page, '', request()->fullUrlWithQuery(['status' => 'pending'])) }}"
+                        class="text-primary">Chờ
+                        duyệt<span class="text-muted">({{ $count[2] }})</span></a>
+                    <a href="{{ str_replace(request()->page, '', request()->fullUrlWithQuery(['status' => 'trash'])) }}"
+                        class="text-primary">Thùng
+                        rác<span class="text-muted">({{ $count[3] }})</span></a>
+                </div>
+                <form action="{{ url('admin/post/action') }}" method="">
 
-                        <div class="form-action form-inline py-3">
-                            <select class="form-control mr-1" name="action" id="">
-                                <option value="">Chọn</option>
-                                @foreach ($list_act as $k => $v)
-                                    <option value="{{ $k }}">{{ $v }}</option>
-                                @endforeach
-                            </select>
-                            <input type="submit" name="btn-search" value="Áp dụng" class="btn btn-primary">
-                        </div>
-                    @endcan
+                    <div class="form-action form-inline py-3">
+                        <select class="form-control mr-1" name="action" id="">
+                            <option value="">Chọn</option>
+                            @foreach ($list_act as $k => $v)
+                                <option value="{{ $k }}">{{ $v }}</option>
+                            @endforeach
+                        </select>
+                        <input type="submit" name="btn-search" value="Áp dụng" class="btn btn-primary">
+                    </div>
                     <table class="table table-striped table-checkall">
                         <thead>
                             <tr>
-                                @can('admin.post.action')
-                                    <th scope="col">
-                                        <input name="checkall" type="checkbox">
-                                    </th>
-                                @endcan
+                                <th scope="col">
+                                    <input name="checkall" type="checkbox">
+                                </th>
                                 <th scope="col">#</th>
                                 <th scope="col">Ảnh</th>
                                 <th scope="col">Tiêu đề</th>
                                 <th scope="col">Danh mục</th>
                                 <th scope="col">Ngày tạo</th>
-                                 @canany(['admin.post.edit', 'admin.post.destroy'])
                                 <th scope="col">Tác vụ</th>
-                                @endcanany
                             </tr>
                         </thead>
                         <tbody>
@@ -72,11 +66,9 @@
                                         $t++;
                                     @endphp
                                     <tr>
-                                        @can('admin.post.action')
-                                            <td>
-                                                <input type="checkbox" name="list_check[]" value="{{ $item->id }}">
-                                            </td>
-                                        @endcan
+                                        <td>
+                                            <input type="checkbox" name="list_check[]" value="{{ $item->id }}">
+                                        </td>
                                         <td scope="row">{{ $t }}</td>
                                         <td style="width:130px"><img src="{{ Asset($item->post_thumb) }}" alt=""
                                                 class="img-fluid img-thumbnail"></td>
@@ -84,26 +76,23 @@
                                         <td>{{ $item->post_cat->post_cat_title }}</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>
-                                            @can('admin.post.edit')
-                                                <a href="{{ Route('admin.post.edit', $item->id) }}"
-                                                    class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip"
-                                                    data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-                                            @endcan
-                                            @can('admin.post.destroy')
-                                                @if (Request::get('status') === 'trash')
-                                                    <a href="{{ Route('admin.post.delete', $item->id) }}"
-                                                        class="btn btn-danger btn-sm rounded-0 text-white"
-                                                        onclick="return confirm('Bạn có chắc chắn muốn xóa')" type="button"
-                                                        data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                            class="fa fa-trash"></i></a>
-                                                @else
-                                                    <a href="{{ Route('admin.post.destroy', $item->id) }}"
-                                                        class="btn btn-danger btn-sm rounded-0 text-white"
-                                                        onclick="return confirm('Bạn có chắc chắn muốn xóa')" type="button"
-                                                        data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                            class="fa fa-trash"></i></a>
-                                                @endif
-                                            @endcan
+                                            <a href="{{ Route('admin.post.edit', $item->id) }}"
+                                                class="btn btn-success btn-sm rounded-0" type="button"
+                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                    class="fa fa-edit"></i></a>
+                                            @if (Request::get('status') === 'trash')
+                                                <a href="{{ Route('admin.post.delete', $item->id) }}"
+                                                    class="btn btn-danger btn-sm rounded-0 text-white"
+                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa')" type="button"
+                                                    data-toggle="tooltip" data-placement="top" title="Delete"><i
+                                                        class="fa fa-trash"></i></a>
+                                            @else
+                                                <a href="{{ Route('admin.post.destroy', $item->id) }}"
+                                                    class="btn btn-danger btn-sm rounded-0 text-white"
+                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa')" type="button"
+                                                    data-toggle="tooltip" data-placement="top" title="Delete"><i
+                                                        class="fa fa-trash"></i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

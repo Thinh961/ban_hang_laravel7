@@ -52,9 +52,7 @@
                             </label>
                         </div>
                     </div>
-                    @can('admin.page.update')
-                        <button type="submit" value="Cập nhật" class="btn btn-primary">Cập nhật</button>
-                    @endcan
+                    <button type="submit" value="Cập nhật" class="btn btn-primary">Cập nhật</button>
                 </form>
             </div>
         </div>

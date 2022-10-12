@@ -26,7 +26,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">Slug</label>
-                                <input class="form-control" type="text" name="slug" value="{{ $cat->slug }}" id="name">
+                                <input class="form-control" type="text" name="slug" value="{{ $cat->slug }}"
+                                    id="name">
                             </div>
                             <div class="form-group">
                                 <label for="">Danh mục cha</label>
@@ -39,10 +40,7 @@
                                     @endforeach
                                 </select>
                             </div>
-
-                            @can('admin.product_cat.update')
-                                <button type="submit" value="Cập nhật" class="btn btn-primary">Cập nhật</button>
-                            @endcan
+                            <button type="submit" value="Cập nhật" class="btn btn-primary">Cập nhật</button>
                         </form>
                     </div>
                 </div>
@@ -76,19 +74,15 @@
                                             </td>
                                             <td>{{ $item->slug }}</td>
                                             <td>
-                                                 @can('admin.product_cat.edit')
                                                 <a href="{{ Route('admin.product_cat.edit', $item->id) }}"
                                                     class="btn btn-success btn-sm rounded-0 text-white" type="button"
                                                     data-toggle="tooltip" data-placement="top" title="Edit"><i
                                                         class="fa fa-edit"></i></a>
-                                                        @endcan
-                                                         @can('admin.product_cat.destroy')
                                                 <a href="{{ Route('admin.product_cat.destroy', $item->id) }}"
                                                     class="btn btn-danger btn-sm rounded-0 text-white"
                                                     onclick="return confirm('Xóa danh mục sẽ xóa tất cả các sản phẩm của danh mục đó, bạn có chắc muốn xóa')"
                                                     type="button" data-toggle="tooltip" data-placement="top"
                                                     title="Delete"><i class="fa fa-trash"></i></a>
-                                                    @endcan
                                             </td>
                                         </tr>
                                     @endforeach

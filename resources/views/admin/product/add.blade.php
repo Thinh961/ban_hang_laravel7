@@ -21,7 +21,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="code"><strong>Mã sản phẩm (không bắt buộc)</strong></label>
-                                <input class="form-control" type="text" name="code" value="{{ old('code') }}" id="code">
+                                <input class="form-control" type="text" name="code" value="{{ old('code') }}"
+                                    id="code">
                             </div>
                             <div class="form-group">
                                 <label for="price"><strong>Giá</strong></label>
@@ -36,16 +37,15 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="qty"><strong>Số lượng</strong></label>
-                                <input class="form-control" type="number" min="0" name="qty" value="{{ old('qty') }}"
-                                    id="qty">
+                                <input class="form-control" type="number" min="0" name="qty"
+                                    value="{{ old('qty') }}" id="qty">
                                 @error('qty')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="intro"><strong>Mô tả sản phẩm</strong></label>
-                                <textarea name="product_desc" class="form-control editor" id="intro" cols="30"
-                                    rows="5">{{ old('product_desc') }}</textarea>
+                                <textarea name="product_desc" class="form-control editor" id="intro" cols="30" rows="5">{{ old('product_desc') }}</textarea>
                                 @error('product_desc')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -54,8 +54,7 @@
                     </div>
                     <div class="form-group">
                         <label for="intro"><strong>Chi tiết sản phẩm</strong></label>
-                        <textarea name="product_detail" class="form-control editor" id="intro" cols="30"
-                            rows="5">{{ old('product_detail') }}</textarea>
+                        <textarea name="product_detail" class="form-control editor" id="intro" cols="30" rows="5">{{ old('product_detail') }}</textarea>
                         @error('product_detail')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
@@ -95,22 +94,21 @@
                     <div class="form-group">
                         <label for=""><strong>Trạng thái</strong></label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="publish"
-                                checked>
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios1"
+                                value="publish" checked>
                             <label class="form-check-label" for="exampleRadios1">
                                 Công khai
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2" value="pending">
+                            <input class="form-check-input" type="radio" name="status" id="exampleRadios2"
+                                value="pending">
                             <label class="form-check-label" for="exampleRadios2">
                                 Chờ duyệt
                             </label>
                         </div>
                     </div>
-                    @can('admin.product.create')
-                        <button type="submit" name="btn_add" value="Thêm mới" class="btn btn-primary">Thêm mới</button>
-                    @endcan
+                    <button type="submit" name="btn_add" value="Thêm mới" class="btn btn-primary">Thêm mới</button>
                 </form>
             </div>
         </div>

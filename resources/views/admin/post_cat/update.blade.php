@@ -44,9 +44,7 @@
                                     @endif
                                 </select>
                             </div>
-                            @can('admin.post_cat.update')
-                                <button type="submit" name="btn_add" value="Thêm mới" class="btn btn-primary">Cập nhật</button>
-                            @endcan
+                            <button type="submit" name="btn_add" value="Thêm mới" class="btn btn-primary">Cập nhật</button>
                         </form>
                     </div>
                 </div>
@@ -86,19 +84,15 @@
                                             </td>
                                             <td>{{ $item->slug }}</td>
                                             <td>
-                                                @can('admin.post_cat.edit')
-                                                    <a href="{{ Route('admin.post_cat.edit', $item->id) }}"
-                                                        class="btn btn-success btn-sm rounded-0 text-white" type="button"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"><i
-                                                            class="fa fa-edit"></i></a>
-                                                @endcan
-                                                @can('admin.post_cat.destroy')
-                                                    <a href="{{ Route('admin.post_cat.destroy', $item->id) }}"
-                                                        class="btn btn-danger btn-sm rounded-0 text-white"
-                                                        onclick="return confirm('Xóa danh mục sẽ xóa tất cả các bài viết của danh mục đó, bạn có chắc muốn xóa')"
-                                                        type="button" data-toggle="tooltip" data-placement="top"
-                                                        title="Delete"><i class="fa fa-trash"></i></a>
-                                                @endcan
+                                                <a href="{{ Route('admin.post_cat.edit', $item->id) }}"
+                                                    class="btn btn-success btn-sm rounded-0 text-white" type="button"
+                                                    data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                        class="fa fa-edit"></i></a>
+                                                <a href="{{ Route('admin.post_cat.destroy', $item->id) }}"
+                                                    class="btn btn-danger btn-sm rounded-0 text-white"
+                                                    onclick="return confirm('Xóa danh mục sẽ xóa tất cả các bài viết của danh mục đó, bạn có chắc muốn xóa')"
+                                                    type="button" data-toggle="tooltip" data-placement="top"
+                                                    title="Delete"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

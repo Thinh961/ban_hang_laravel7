@@ -90,7 +90,7 @@ class AdminProductController extends Controller
     {
         $data = $request->all();
         $data['slug'] =  Str::slug($request->input('product_title'));
-        $data['code'] = !empty($request->input('code')) ?  $request->input('code') : "UNIMART-" . Str::upper(Str::random(6));
+        $data['code'] = !empty($request->input('code')) ?  $request->input('code') : "CITYZENS-" . Str::upper(Str::random(6));
         $data['feature'] = !empty($request->input('feature')) ?  $request->input('feature') : "0";
         if ($request->hasFile('product_thumb')) {
             $file = $request->product_thumb;

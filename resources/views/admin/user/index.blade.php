@@ -19,44 +19,36 @@
                 </div>
             @endif
             <div class="card-body">
-                @can('admin.user.action')
-                    <div class="analytic">
-                        <a href="{{ url('admin/user/list') }}" class="text-primary">Tất cả<span
-                                class="text-muted">({{ $count[0] }})</span></a>
-                        <a href="{{ request()->fullUrlWithQuery(['status' => 'active']) }}" class="text-primary">Kích
-                            hoạt<span class="text-muted">({{ $count[0] }})</span></a>
-                        <a href="{{ request()->fullUrlWithQuery(['status' => 'trash']) }}" class="text-primary">Vô hiệu
-                            hóa<span class="text-muted">({{ $count[1] }})</span></a>
+                <div class="analytic">
+                    <a href="{{ url('admin/user/list') }}" class="text-primary">Tất cả<span
+                            class="text-muted">({{ $count[0] }})</span></a>
+                    <a href="{{ request()->fullUrlWithQuery(['status' => 'active']) }}" class="text-primary">Kích
+                        hoạt<span class="text-muted">({{ $count[0] }})</span></a>
+                    <a href="{{ request()->fullUrlWithQuery(['status' => 'trash']) }}" class="text-primary">Vô hiệu
+                        hóa<span class="text-muted">({{ $count[1] }})</span></a>
 
+                </div>
+                <form action="{{ url('admin/user/action') }}" method="">
+                    <div class="form-action form-inline py-3">
+                        <select class="form-control mr-1" name="action" id="">
+                            <option value="">Chọn</option>
+                            @foreach ($list_act as $k => $v)
+                                <option value="{{ $k }}">{{ $v }}</option>
+                            @endforeach
+                        </select>
+                        <input type="submit" name="btn-action" value="Áp dụng" class="btn btn-primary">
                     </div>
-                    <form action="{{ url('admin/user/action') }}" method="">
-
-                        <div class="form-action form-inline py-3">
-                            <select class="form-control mr-1" name="action" id="">
-                                <option value="">Chọn</option>
-                                @foreach ($list_act as $k => $v)
-                                    <option value="{{ $k }}">{{ $v }}</option>
-                                @endforeach
-                            </select>
-                            <input type="submit" name="btn-action" value="Áp dụng" class="btn btn-primary">
-                        </div>
-                    @endcan
                     <table class="table table-striped table-checkall">
                         <thead>
                             <tr>
-                                @can('admin.user.action')
-                                    <th>
-                                        <input type="checkbox" name="checkall">
-                                    </th>
-                                @endcan
+                                <th>
+                                    <input type="checkbox" name="checkall">
+                                </th>
                                 <th scope="col">#</th>
                                 <th scope="col">Họ tên</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Quyền</th>
                                 <th scope="col">Ngày tạo</th>
-                                {{-- @canany(['admin.user.edit, {{ Auth::user()->id }}', 'admin.user.destroy']) --}}
-                                    <th scope="col">Tác vụ</th>
-                                {{-- @endcan --}}
+                                <th scope="col">Tác vụ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,36 +61,25 @@
                                         $t++;
                                     @endphp
                                     <tr>
-                                        @can('admin.user.action')
-                                            <td>
-                                                <input type="checkbox" name="listcheck[]" value="{{ $user->id }}">
-                                            </td>
-                                        @endcan
+                                        <td>
+                                            <input type="checkbox" name="listcheck[]" value="{{ $user->id }}">
+                                        </td>
                                         <th scope="row">{{ $t }}</th>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>
-                                            @foreach ($user->roles as $item)
-                                                <span class="badge badge-success">{{ $item->name }}</span>
-                                            @endforeach
-                                        </td>
                                         <td>{{ $user->created_at }}</td>
                                         <td>
-                                            @can('admin.user.edit', $user->id)
-                                                <a href="{{ route('admin.user.edit', $user->id) }}"
-                                                    class="btn btn-success btn-sm rounded-0 text-white" type="button"
-                                                    data-toggle="tooltip" data-placement="top" title="Edit"><i
-                                                        class="fa fa-edit"></i></a>
-                                            @endcan
-                                            @can('admin.user.destroy')
-                                                @if (Auth::id() != $user->id)
-                                                    <a href="{{ route('admin.user.destroy', $user->id) }}"
-                                                        class="btn btn-danger btn-sm rounded-0 text-white"
-                                                        onclick="return confirm('Bạn có chắc chắn muốn xóa')" type="button"
-                                                        data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                            class="fa fa-trash"></i></a>
-                                                @endif
-                                            @endcan
+                                            <a href="{{ route('admin.user.edit', $user->id) }}"
+                                                class="btn btn-success btn-sm rounded-0 text-white" type="button"
+                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                    class="fa fa-edit"></i></a>
+                                            @if (Auth::id() != $user->id)
+                                                <a href="{{ route('admin.user.destroy', $user->id) }}"
+                                                    class="btn btn-danger btn-sm rounded-0 text-white"
+                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa')" type="button"
+                                                    data-toggle="tooltip" data-placement="top" title="Delete"><i
+                                                        class="fa fa-trash"></i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

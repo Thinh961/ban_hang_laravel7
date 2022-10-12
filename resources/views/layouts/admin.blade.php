@@ -74,38 +74,18 @@
             z-index: 1055;
             margin: 5px;
         }
-
     </style>
     <div id="warpper" class="nav-fixed">
-        <nav class="topnav shadow navbar-light bg-white d-flex ">
-            <div class="navbar-brand"><a href="{{ url('admin') }}">UNIMART ADMIN</a></div>
+        <nav class="topnav shadow-lg navbar-light bg-dark d-flex">
+            <div class="navbar-brand"><a href="{{ url('admin') }}" class="text-white">CITYZENS ADMIN</a></div>
             <div class="nav-right ">
-                <a href="{{ url('/') }}" class="btn btn-danger ml-auto" target="_blank">Trang chủ Website</a>
-                <div class="nav-item dropdown dropdown-notifications">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Thông báo<span
-                            class="badge badge-danger count-notification">{{ Auth::user()->unreadNotifications->count() }}</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right menu-notification" aria-labelledby="navbarDropdown">
-                        @forelse (Auth::user()->unreadNotifications as $notification)
-                            <a class="dropdown-item"
-                                href="{{ Route('admin.notification.mark_as_read', [$notification->data['id_order'], $notification->id]) }}">
-                                <span>Bạn có đơn hàng từ mới {{ $notification->data['fullname'] }}</span><br>
-                            </a>
-                        @empty
-                            <a class="dropdown-item empty" href="#">
-                                <span>Hiện không có thông báo nào!</span>
-                            </a>
-                        @endforelse
-                    </div>
-                </div>
-                <div class="btn-group ">
-                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                <div class="btn-group  ml-auto">
+                    <button type="button" class="btn dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         {{ Auth::user()->name }}
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="{{ route('admin.user.edit', Auth::id()) }}">Tài khoản</a>
+                        <a class="dropdown-item" href="{{ route('admin.user.edit', Auth::id()) }}" >Tài khoản</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
@@ -117,15 +97,13 @@
                 </div>
             </div>
         </nav>
-
         <!-- end nav  -->
         @php
             $module_active = session('module_active');
-            $menus = config('menu');
         @endphp
         <div id="page-body" class="d-flex">
-            <div id="sidebar" class="bg-white">
-                <ul id="sidebar-menu">
+            <div id="sidebar" class="bg-dark">
+                <ul id="sidebar-menu" class="text-white">
                     <li class="nav-link {{ $module_active == 'dasboard' ? 'active' : '' }}">
                         <a href="{{ url('admin') }}">
                             <div class="nav-link-icon d-inline-flex">
@@ -134,32 +112,7 @@
                             Dashboard
                         </a>
                     </li>
-                    @foreach ($menus as $menu)
-                        @if (Gate::check($menu['route']) || Gate::check($menu['items'][0]['route']) || Gate::check($menu['items'][1]['route']))
-                            <li class="nav-link {{ $module_active == $menu['module_active'] ? 'active' : '' }} nav-item-dashboard">
-                                <a href="{{ Route($menu['route']) }}">
-                                    <div class="nav-link-icon d-inline-flex">
-                                        <i class="{{ $menu['icon'] }}"></i>
-                                    </div>
-                                    {{ $menu['label'] }}
-                                </a>
-                                @if (isset($menu['items']))
-                                    @if (($menu['items'][0]['label'] && $menu['items'][0]['route']) != '')
-                                        <i class="arrow fas fa-angle-right"></i>
-                                    @endif
-                                    @foreach ($menu['items'] as $item)
-                                        <ul class="sub-menu">
-                                            @can($item['route'])
-                                                <li><a href="{{ Route($item['route']) }}">{{ $item['label'] }}</a>
-                                                </li>
-                                            @endcan
-                                        </ul>
-                                    @endforeach
-                                @endif
-                            </li>
-                        @endif
-                    @endforeach
-                    {{-- <li class="nav-link {{ $module_active == 'page' ? 'active' : '' }}">
+                    <li class="nav-link {{ $module_active == 'page' ? 'active' : '' }}">
                         <a href="{{ Route('admin.page.index') }}">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-file"></i>
@@ -219,7 +172,7 @@
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="fas fa-cart-arrow-down"></i>
                             </div>
-                           Đơn hàng
+                            Đơn hàng
                         </a>
                     </li>
                     <li class="nav-link {{ $module_active == 'customer' ? 'active' : '' }}">
@@ -239,8 +192,8 @@
                         </a>
                         <i class="arrow fas fa-angle-right"></i>
                         <ul class="sub-menu">
-                            <li><a href="{{ Route('admin.slider.index') }}">Danh sách</a></li>
                             <li><a href="{{ Route('admin.slider.create') }}">Thêm mới</a></li>
+                            <li><a href="{{ Route('admin.slider.index') }}">Danh sách</a></li>
                         </ul>
                     </li>
                     <li class="nav-link {{ $module_active == 'user' ? 'active' : '' }}">
@@ -256,31 +209,6 @@
                             <li><a href="{{ url('admin/user/list') }}">Danh sách</a></li>
                         </ul>
                     </li>
-                    <li class="nav-link {{ $module_active == 'role' ? 'active' : '' }}">
-                        <a href="{{ Route('admin.role.index') }}">
-                            <div class="nav-link-icon d-inline-flex">
-                                <i class="fab fa-android"></i>
-                            </div>
-                            Vai trò
-                        </a>
-                        <i class="arrow fas fa-angle-right"></i>
-                        <ul class="sub-menu">
-                            <li><a href="{{ Route('admin.role.create') }}">Thêm mới</a></li>
-                            <li><a href="{{ Route('admin.role.index') }}">Danh sách</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-link {{ $module_active == 'permission' ? 'active' : '' }}">
-                        <a href="{{ Route('admin.permission.index') }}">
-                            <div class="nav-link-icon d-inline-flex">
-                                <i class="fab fa-paypal"></i>
-                            </div>
-                            Quyền
-                        </a>
-                        <i class="arrow fas fa-angle-right"></i>
-                        <ul class="sub-menu">
-                            <li><a href="{{ Route('admin.permission.index') }}">Thêm mới</a></li>
-                        </ul>
-                    </li> --}}
                 </ul>
             </div>
             <div id="wp-content">
@@ -295,7 +223,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
     <script src="{{ asset('admin/js/app.js') }}"></script>
     <script src="{{ asset('dist/toast.min.js') }}"></script>
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
             encrypted: true,
             cluster: "ap1"
@@ -331,7 +259,7 @@
                 delay: 20000,
             });
         });
-    </script>
+    </script> --}}
     <script>
         $(document).ready(function() {
             $("#selectall").change(function() {
@@ -343,11 +271,11 @@
             });
         });
     </script>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('.role-user').select2();
         });
-    </script>
+    </script> --}}
 </body>
 
 </html>

@@ -4,9 +4,9 @@
         <div class="d-inline-block">
             <img src="{{ asset('images/dau-check.png') }}" style="margin:0px auto" width="80px" alt="">
         </div>
-        <p>Cảm ơn quý khách đã mua hàng tại Unimart</p>
+        <p>Cảm ơn quý khách đã mua hàng tại Cityzens</p>
         <em>Quý khách có thể lưu mã đơn hàng và theo dõi thông tin đơn hàng của mình</em> <br>
-        <em>Tổng đài viên Unimart sẽ liên hệ đến quý khách trong vòng <strong>24 giờ </strong>để xác nhận đơn hàng</em>
+        <em>Tổng đài viên Cityzens sẽ liên hệ đến quý khách trong vòng <strong>24 giờ </strong>để xác nhận đơn hàng</em>
         <em>xin cảm quý khách đã cho chúng tôi được phục vụ</em>
         <div class="widget mb-3" style="margin: 15px 20% 0px 20%;border: 1px solid #dee2e6;">
             <h4 class="wg-title"

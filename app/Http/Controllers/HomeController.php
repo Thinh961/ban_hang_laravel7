@@ -8,6 +8,7 @@ use App\Product;
 use App\Slider;
 use App\Page;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {

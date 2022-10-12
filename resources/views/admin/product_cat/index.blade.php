@@ -37,10 +37,7 @@
                                     @endforeach
                                 </select>
                             </div>
-
-                            @can('admin.product_cat.create')
-                                <button type="submit" value="Thêm mới" class="btn btn-primary">Thêm mới</button>
-                            @endcan
+                            <button type="submit" value="Thêm mới" class="btn btn-primary">Thêm mới</button>
                         </form>
                     </div>
                 </div>
@@ -57,9 +54,7 @@
                                     <th scope="col">STT</th>
                                     <th scope="col">Tên danh mục</th>
                                     <th scope="col">Slug</th>
-                                     @canany(['admin.product_cat.edit', 'admin.product_cat.destroy'])
                                     <th scope="col">Thao tác</th>
-                                    @endcanany
                                 </tr>
                             </thead>
                             <tbody>
@@ -82,19 +77,15 @@
                                             </td>
                                             <td>{{ $item->slug }}</td>
                                             <td>
-                                                @can('admin.product_cat.edit')
-                                                    <a href="{{ Route('admin.product_cat.edit', $item->id) }}"
-                                                        class="btn btn-success btn-sm rounded-0 text-white" type="button"
-                                                        data-toggle="tooltip" data-placement="top" title="Edit"><i
-                                                            class="fa fa-edit"></i></a>
-                                                @endcan
-                                                @can('admin.product_cat.destroy')
-                                                    <a href="{{ Route('admin.product_cat.destroy', $item->id) }}"
-                                                        class="btn btn-danger btn-sm rounded-0 text-white"
-                                                        onclick="return confirm('Xóa danh mục sẽ xóa tất cả các sản phẩm của danh mục đó, bạn có chắc muốn xóa')"
-                                                        type="button" data-toggle="tooltip" data-placement="top"
-                                                        title="Delete"><i class="fa fa-trash"></i></a>
-                                                @endcan
+                                                <a href="{{ Route('admin.product_cat.edit', $item->id) }}"
+                                                    class="btn btn-success btn-sm rounded-0 text-white" type="button"
+                                                    data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                        class="fa fa-edit"></i></a>
+                                                <a href="{{ Route('admin.product_cat.destroy', $item->id) }}"
+                                                    class="btn btn-danger btn-sm rounded-0 text-white"
+                                                    onclick="return confirm('Xóa danh mục sẽ xóa tất cả các sản phẩm của danh mục đó, bạn có chắc muốn xóa')"
+                                                    type="button" data-toggle="tooltip" data-placement="top"
+                                                    title="Delete"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -103,7 +94,6 @@
                                         <td colspan="7" class="text-center bg-white">Hiện không có bài viết nào</td>
                                     </tr>
                                 @endif
-
                             </tbody>
                         </table>
                     </div>

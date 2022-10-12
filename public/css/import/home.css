@@ -1,8 +1,9 @@
 /*MAIN CONTENT*/
 #main-content-wp {
-    background: #f7f7f7;
+    background: #fff;
     padding-top: 25px;
     padding-bottom: 75px;
+    min-height: 365px;
 }
 .main-content {
     width: 75%;
@@ -29,7 +30,7 @@
     display: block;
     font-size: 20px;
     text-transform: uppercase;
-    background: #969696;
+    background: #000;
     color: #fff;
     padding: 15px;
     border-bottom: 1px solid #dadada;
@@ -309,4 +310,22 @@
     right: 5%;
     transform: translateY(-50%);
     color: #666;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff!important;;
+    background-color: #000000!important;
+    border-color: #000000!important;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #000!important;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
 }

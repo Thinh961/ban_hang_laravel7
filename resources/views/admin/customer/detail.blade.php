@@ -58,9 +58,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @can('admin.customer.update')
-                                <button class="btn btn-success">Cập nhật</button>
-                            @endcan
+                            <button class="btn btn-success">Cập nhật</button>
                         </form>
                     </ul>
                 </div>
@@ -112,8 +110,7 @@
                                     </td>
                                     <td>
                                         @foreach ($item->orderDetail as $product)
-                                            <span
-                                                class="text-secondary">{{ $product->product->product_title }}</span><br>
+                                            <span class="text-secondary">{{ $product->product->product_title }}</span><br>
                                             <span>SL:{{ $product->qty }} (Sp)</span><br>
                                         @endforeach
                                     </td>

@@ -91,8 +91,6 @@
                         </div>
                         <div class="form-col fl-left" style="padding-right: 0">
                             <label for="address">Địa chỉ chi tiết</label>
-                            {{-- <input type="text" name="address" class="form-control" value="{{ old('address') }}"
-                                placeholder="Số nhà, tên đường" id="address"> --}}
                                 <textarea name="address" id="address" class="form-control" placeholder="Số nhà, tên đường" id="address">{{ old('address') }}</textarea>
                             @error('address')
                                 <small class="text-danger">
@@ -157,7 +155,7 @@
                             <div class="list-pay">
                                 <div class="card">
                                     <div class="card-header border-0">
-                                        <a href="#pay-1" class="card-link d-block" style="line-height: 2px">
+                                        <a href="#pay-1" class="card-link d-block" style="line-height: 2px; color: #000">
                                             <input type="radio" name="payment_method" checked="" value="at-home"
                                                 id="pay-cod">
                                             <label for="pay-cod">Thanh toán khi nhận hàng!</label>
@@ -171,17 +169,17 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-header border-0">
-                                        <a href="#pay-2" class="card-link d-block" style="line-height: 2px">
+                                        <a href="#pay-2" class="card-link d-block" style="line-height: 2px; color: #000">
                                             <input type="radio" name="payment_method" value="bank" id="pay-bank">
                                             <label for="pay-bank">Thanh toán ngân hàng</label>
                                         </a>
                                     </div>
                                     <div class="card-body" style="display: none;">
-                                        <strong>TÀI KHOẢN 1:</strong> Công Ty Cổ Phần Viễn Thông Di Động UNIMART <br>
+                                        <strong>TÀI KHOẢN 1:</strong> Nguyễn Sỹ Thái Hoàng <br>
                                         STK: 8300138575007 <br>
                                         Ngân hàng: MBank <br>
                                         <br>
-                                        <strong>TÀI KHOẢN 2:</strong> Công Ty Cổ Phần Viễn Thông Di Động UNIMART <br>
+                                        <strong>TÀI KHOẢN 2:</strong> Nguyễn Sỹ Thái Hoàng <br>
                                         STK: 0541000206151 <br>
                                         Ngân hàng: Vietcombank <br>
                                         <br>Thủ tục thanh toán trực tiếp tới ngân hàng: <br>

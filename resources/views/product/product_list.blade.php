@@ -132,20 +132,20 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="radio" class="" data-url="{{ Route('product.filter.price') }}" value="1" name="r-price"></td>
-                        <td class="test">Dưới 1.000.000đ</td>
+                        <td><input type="radio" class="" data-url="{{ Route('product.filter.price') }}" value="1" name="r-price" id="under-1tr"></td>
+                        <td class="test"><label for="under-1tr" class="mb-0">Dưới 1.000.000đ</label></td>
                     </tr>
                     <tr>
-                        <td><input type="radio" class="" data-url="{{ Route('product.filter.price') }}" value="2" name="r-price"></td>
-                        <td>1.000.000đ - 5.000.000đ</td>
+                        <td><input type="radio" class="" data-url="{{ Route('product.filter.price') }}" value="2" name="r-price" id="1tr-5tr"></td>
+                        <td><label for="1tr-5tr" class="mb-0">1.000.000đ - 5.000.000đ</label> </td>
                     </tr>
                     <tr>
-                        <td><input type="radio" class="" data-url="{{ Route('product.filter.price') }}" value="3" name="r-price"></td>
-                        <td>5.000.000đ - 10.000.000đ</td>
+                        <td><input type="radio" class="" data-url="{{ Route('product.filter.price') }}" value="3" name="r-price" id="5tr-10tr"></td>
+                        <td><label for="5tr-10tr" class="mb-0">5.000.000đ - 10.000.000đ</label></td>
                     </tr>
                     <tr>
-                        <td><input type="radio" class="" data-url="{{ Route('product.filter.price') }}" value="4" name="r-price"></td>
-                        <td>Trên 10.000.000đ</td>
+                        <td><input type="radio" class="" data-url="{{ Route('product.filter.price') }}" value="4" name="r-price" id="over-10tr"></td>
+                        <td><label for="over-10tr" class="mb-0">Trên 10.000.000đ</label></td>
                     </tr>
                 </tbody>
             </table>
@@ -159,8 +159,8 @@
                 <tbody>
                     @foreach ($list_trademark as $item)
                     <tr>
-                        <td><input type="radio" class="" data-url="{{ Route('product.filter.brand') }}" value="{{ $item->id }}" name="r-brand"></td>
-                        <td>{{ $item->product_cat_title }}</td>
+                        <td><input type="radio" class="" data-url="{{ Route('product.filter.brand') }}" value="{{ $item->id }}" name="r-brand" id="{{$item->id}}"></td>
+                        <td><label for="{{$item->id}}" class="mb-0">{{ $item->product_cat_title }}</label></td>
                     </tr>
                     @endforeach
                 </tbody>

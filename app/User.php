@@ -37,32 +37,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function roles()
-    {
-        return $this->belongsToMany('App\Role', 'role_user', 'user_id', 'role_id');
-    }
-
-    public function checkPermissionAccess($pemissionCheck)
-    {
-        $roles = auth()->user()->roles;
-        foreach ($roles as $role) {
-            $permissions = $role->permissions;
-            if ($permissions->contains('key_code', $pemissionCheck)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public function isAdmin()
-    {
-        $roles = auth()->user()->roles;
-        $data = [];
-        foreach ($roles as $role) {
-            $data[] = $role->name;
-        }
-        if (in_array('Admin', $data)) return true;
-        return false;
-    }
 }

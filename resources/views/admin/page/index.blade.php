@@ -18,43 +18,38 @@
                 </div>
             @endif
             <div class="card-body">
-                @can('admin.page.action')
-                    <div class="analytic">
-                        <a href="{{ Route('admin.page.index') }}" class="text-primary">Tất cả<span
-                                class="text-muted">({{ $count[0] }})</span></a>
-                        <a href="{{ request()->fullUrlWithQuery(['status' => 'publish']) }}" class="text-primary">Đang hoạt
-                            động<span class="text-muted">({{ $count[1] }})</span></a>
-                        <a href="{{ request()->fullUrlWithQuery(['status' => 'pending']) }}" class="text-primary">Chờ
-                            duyệt<span class="text-muted">({{ $count[2] }})</span></a>
-                    </div>
-                    <form action="{{ url('admin/page/action') }}" method="POST">
-                        @csrf
+                <div class="analytic">
+                    <a href="{{ Route('admin.page.index') }}" class="text-primary">Tất cả<span
+                            class="text-muted">({{ $count[0] }})</span></a>
+                    <a href="{{ request()->fullUrlWithQuery(['status' => 'publish']) }}" class="text-primary">Đang hoạt
+                        động<span class="text-muted">({{ $count[1] }})</span></a>
+                    <a href="{{ request()->fullUrlWithQuery(['status' => 'pending']) }}" class="text-primary">Chờ
+                        duyệt<span class="text-muted">({{ $count[2] }})</span></a>
+                </div>
+                <form action="{{ url('admin/page/action') }}" method="POST">
+                    @csrf
 
-                        <div class="form-action form-inline py-3">
-                            <select class="form-control mr-1" id="" name="action">
-                                <option value="">Chọn</option>
-                                @foreach ($list_act as $k => $item)
-                                    <option value="{{ $k }}">{{ $item }}</option>
-                                @endforeach
-                            </select>
-                            <input type="submit" name="btn-search" value="Áp dụng" class="btn btn-primary">
-                        </div>
-                    @endcan
+                    <div class="form-action form-inline py-3">
+                        <select class="form-control mr-1" id="" name="action">
+                            <option value="">Chọn</option>
+                            @foreach ($list_act as $k => $item)
+                                <option value="{{ $k }}">{{ $item }}</option>
+                            @endforeach
+                        </select>
+                        <input type="submit" name="btn-search" value="Áp dụng" class="btn btn-primary">
+                    </div>
+
                     <table class="table table-striped table-checkall">
                         <thead>
                             <tr>
-                                @can('admin.page.action')
-                                    <th scope="col">
-                                        <input name="checkall" type="checkbox">
-                                    </th>
-                                @endcan
+                                <th scope="col">
+                                    <input name="checkall" type="checkbox">
+                                </th>
                                 <th scope="col">#</th>
                                 <th scope="col">Tiêu đề</th>
                                 <th scope="col">Slug</th>
                                 <th scope="col">Ngày tạo</th>
-                                  @canany(['admin.page.edit', 'admin.page.destroy'])
                                 <th scope="col">Tác vụ</th>
-                                @endcanany
                             </tr>
                         </thead>
                         <tbody>
@@ -63,27 +58,22 @@
                                 @foreach ($list_page as $item)
                                     <?php $t++; ?>
                                     <tr>
-                                        @can('admin.page.action')
-                                            <td>
-                                                <input type="checkbox" name="list_check[]" value="{{ $item->id }}">
-                                            </td>
-                                        @endcan
+                                        <td>
+                                            <input type="checkbox" name="list_check[]" value="{{ $item->id }}">
+                                        </td>
                                         <td scope="row">{{ $t }}</td>
                                         <td><a href="">{{ $item->page_title }}</a></td>
                                         <td>{{ $item->slug }}</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>
-                                            @can('admin.page.edit')
-                                                <a href="{{ Route('admin.page.edit', $item->id) }}"
-                                                    class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip"
-                                                    data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-                                            @endcan
-                                            @can('admin.page.destroy')
-                                                <a href="{{ Route('admin.page.destroy', $item->id) }}"
-                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa')"
-                                                    class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip"
-                                                    data-placement="top" title="Trash"><i class="fa fa-trash"></i></a>
-                                            @endcan
+                                            <a href="{{ Route('admin.page.edit', $item->id) }}"
+                                                class="btn btn-success btn-sm rounded-0" type="button"
+                                                data-toggle="tooltip" data-placement="top" title="Edit"><i
+                                                    class="fa fa-edit"></i></a>
+                                            <a href="{{ Route('admin.page.destroy', $item->id) }}"
+                                                onclick="return confirm('Bạn có chắc chắn muốn xóa')"
+                                                class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip"
+                                                data-placement="top" title="Trash"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -96,10 +86,6 @@
                         </tbody>
                     </table>
                 </form>
-
-                <nav aria-label="Page navigation example">
-
-                </nav>
             </div>
         </div>
     </div>

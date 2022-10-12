@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>UNIMART STORE</title>
+    <title>CITYZENS STORE</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/bootstrap/bootstrap-theme.min.css') }}" rel="stylesheet" type="text/css" />
@@ -53,32 +53,27 @@
                                         </li>
                                     @endforeach
                                 @endif
-                                <li>
-                                    <a href="{{ url('tra-cuu-don-hang') }}" title="">Tra cứu đơn hàng</a>
-                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div id="head-body" class="clearfix">
                     <div class="wp-inner">
-                        <a href="{{ url('/') }}" title="" id="logo" class="fl-left"><img
-                                src="{{ asset('images/logo3.png') }}" /></a>
+                        <a href="{{ url('/') }}" title="" id="logo" class="fl-left">CITYZENS</a>
                         <div id="search-wp" class="fl-left search-wp">
                             <form method="" action="{{ url('tim-kiem') }}">
-                                <input type="text" name="key" id="s" placeholder="Nhập từ khóa tìm kiếm tại đây!">
+                                <input type="text" name="key" id="s"
+                                    placeholder="Nhập từ khóa tìm kiếm tại đây!">
                                 <button type="submit" value="Tìm kiếm" id="sm-s">Tìm kiếm</button>
                             </form>
                         </div>
                         <div id="action-wp" class="fl-right">
                             <div id="advisory-wp" class="fl-left">
                                 <span class="title">Tư vấn</span>
-                                <span class="phone">0348431999</span>
+                                <span class="phone">0348259364</span>
                             </div>
-                            <div id="btn-respon" class="fl-right"><i class="fa fa-bars"
-                                    aria-hidden="true"></i></div>
-                            <a href="{{ url('gio-hang') }}" title="giỏ hàng" id="cart-respon-wp"
-                                class="fl-right">
+                            <div id="btn-respon" class="fl-right"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                            <a href="{{ url('gio-hang') }}" title="giỏ hàng" id="cart-respon-wp" class="fl-right">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                 <span id="num">{{ Cart::count() }}</span>
                             </a>
@@ -88,13 +83,15 @@
                                     <span id="num" class="total-cart">{{ Cart::count() }}</span>
                                 </a>
                                 <div id="dropdown" style="min-height: 100px;">
-                                    <p class="desc">Có <span class="total-cart"> {{ Cart::count() }} sản phẩm </span>trong giỏ hàng</p>
+                                    <p class="desc">Có <span class="total-cart"> {{ Cart::count() }} sản phẩm
+                                        </span>trong giỏ hàng</p>
                                     <ul class="list-cart">
                                         @if (Cart::content())
                                             @foreach (Cart::content() as $item)
                                                 <li class="clearfix">
                                                     <a href="" title="" class="thumb fl-left">
-                                                        <img src="{{ Asset($item->options->product_thumb) }}" alt="">
+                                                        <img src="{{ Asset($item->options->product_thumb) }}"
+                                                            alt="">
                                                     </a>
                                                     <div class="info fl-right">
                                                         <a href="" title=""
@@ -144,15 +141,10 @@
                 <div id="foot-body">
                     <div class="wp-inner clearfix">
                         <div class="block" id="info-company">
-                            <h3 class="title">UNIMART</h3>
-                            <p class="desc">UNIMART luôn cung cấp luôn là sản phẩm chính hãng có thông tin rõ
+                            <h3 class="title">CITYZENS</h3>
+                            <p class="desc">CITYZENS luôn cung cấp luôn là sản phẩm chính hãng có thông tin rõ
                                 ràng, chính
                                 sách ưu đãi cực lớn cho khách hàng có thẻ thành viên.</p>
-                            <div id="payment">
-                                <div class="thumb">
-                                    <img src="{{Asset('images/img-foot.png')}}" alt="">
-                                </div>
-                            </div>
                         </div>
                         <div class="block menu-ft" id="info-shop">
                             <h3 class="title">Thông tin cửa hàng</h3>
@@ -164,7 +156,7 @@
                                     <p>0987.654.321 - 0989.989.989</p>
                                 </li>
                                 <li>
-                                    <p>unimart@gmail.com</p>
+                                    <p>thaihoang@gmail.com</p>
                                 </li>
                             </ul>
                         </div>
@@ -185,9 +177,10 @@
                             <h3 class="title">Bảng tin</h3>
                             <p class="desc">Đăng ký với chung tôi để nhận được thông tin ưu đãi sớm nhất</p>
                             <div id="form-reg">
-                                <form method="POST" action="{{ url('mail/info') }}">
+                                <form method="" action="">
                                     @csrf
-                                    <input type="email" name="email" id="email" placeholder="Nhập email tại đây">
+                                    <input type="email" name="email" id="email"
+                                        placeholder="Nhập email tại đây">
                                     <button type="submit" id="sm-reg">Đăng ký</button>
                                 </form>
                             </div>
@@ -196,18 +189,18 @@
                 </div>
                 <div id="foot-bot">
                     <div class="wp-inner">
-                        <p id="copyright" style="margin-bottom:0px">© Bản quyền thuộc về Nguyễn Ngọc Hiếu
+                        <p id="copyright" style="margin-bottom:0px">© Bản quyền thuộc về Nguyễn Sỹ Thái Hoàng
                         </p>
                     </div>
                 </div>
             </div>
         </div>
         <div id="menu-respon">
-            <a href="{{ url('/') }}" title="" class="logo" style="background: #6c757d;"><img
-                    src="{{ asset('images/logo1.png') }}" /></a>
+            <a href="{{ url('/') }}" title="" class="logo" style="background: #000; color:#fff; border-top:1px solid #999">CITYZENS</a>
             <div id="search-wp" class="">
                 <form method="" action="{{ url('tim-kiem') }}">
-                    <input type="text" name="key" id="s" placeholder="Nhập từ khóa tìm kiếm tại đây!">
+                    <input type="text" name="key" id="s"
+                        placeholder="Nhập từ khóa tìm kiếm tại đây!">
                     <button type="submit" value="Tìm kiếm" id="sm-s">Tìm kiếm</button>
                 </form>
             </div>

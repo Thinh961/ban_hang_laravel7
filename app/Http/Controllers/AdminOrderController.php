@@ -100,9 +100,9 @@ class AdminOrderController extends Controller
     {
         $info_order = Order::withTrashed()->where('id', $id)->first();
         $status = $request->input('status');
-        if ($info_order->status == 'completed' & $status != 'completed') {
+        if ($info_order->status == 'completed') {
             return redirect()->back()->with('alert', 'Đơn hàng ở trạng thái thành công không thể cập nhật trạng thái');
-        } elseif ($info_order->status == 'cancel' & $status != 'cancel') {
+        } elseif ($info_order->status == 'cancel') {
             return redirect()->back()->with('alert', 'Đơn hàng ở trạng thái hủy không thể cập nhật trạng thái');
         } else {
             Order::withTrashed()->where('id', $id)->update($request->except('_token'));
