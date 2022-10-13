@@ -21,7 +21,7 @@
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script>
         var editor_config = {
-            path_absolute: "http://localhost/Unitop.vn/ban_hang_laravel7/",
+            path_absolute: "http://localhost/ban_hang_laravel7/",
             selector: 'textarea.editor',
             relative_urls: false,
             plugins: [

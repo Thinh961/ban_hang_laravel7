@@ -150,10 +150,10 @@
                             <h3 class="title">Thông tin cửa hàng</h3>
                             <ul class="list-item">
                                 <li>
-                                    <p>106 - Trần Bình - Cầu Giấy - Hà Nội</p>
+                                    <p>1999 - Đường Láng - Hà Nội</p>
                                 </li>
                                 <li>
-                                    <p>0987.654.321 - 0989.989.989</p>
+                                    <p>0987654321</p>
                                 </li>
                                 <li>
                                     <p>thaihoang@gmail.com</p>
