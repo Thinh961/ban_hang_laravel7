@@ -9,7 +9,7 @@ use App\Product;
             <div class="section-detail">
                 @foreach ($list_slider as $item)
                     <div class="item" style="height:384px">
-                        <img src="{{asset($item->slider_thumb)}}" alt="" class="img-fluid">
+                        <img src="{{ asset($item->slider_thumb) }}" alt="" class="img-fluid">
                     </div>
                 @endforeach
             </div>
@@ -71,26 +71,72 @@ use App\Product;
                                 <a href="{{ Route('product.detail', [$product->slug, $product->id]) }}" title=""
                                     class="product-name">{{ $product->product_title }}</a>
                                 <div class="price">
-                                    <span class="new">{{ currency_format($product->price,'.đ') }}</span>
+                                    <span class="new">{{ currency_format($product->price, '.đ') }}</span>
                                 </div>
-                                @if ($product->tracking=='out-of-stock')
-                        <div class="sold-out">
-                             <img src="{{asset('images/hethang.png')}}" alt="">
-                         </div>
-                    @endif
-                    
-                    <div class="action clearfix">
-                        @if ($product->tracking!='out-of-stock')
-                        <a href="{{ Route('cart.get.add', $product->id) }}" title="Thêm giỏ hàng" class="add-cart fl-left">Thêm giỏ hàng</a>
-                        <a href="{{ Route('cart.buynow', $product->id) }}" title="Mua ngay" class="buy-now fl-right">Mua
-                            ngay</a>
-                            @else
-                            <a href="{{ Route('cart.get.add', $product->id) }}" style="pointer-events: none" title="Thêm giỏ hàng" class="add-cart fl-left">Thêm giỏ hàng</a>
-                            <a href="{{ Route('cart.buynow', $product->id) }}" style="pointer-events: none" title="Mua ngay" class="buy-now fl-right">Mua
-                                ngay</a>
-                            @endif
-                    </div>
-                   
+                                @if ($product->tracking == 'out-of-stock')
+                                    <div class="sold-out">
+                                        <img src="{{ asset('images/hethang.png') }}" alt="">
+                                    </div>
+                                @endif
+                                <div class="action clearfix">
+                                    @if ($product->tracking != 'out-of-stock')
+                                        <a href="{{ Route('cart.get.add', $product->id) }}" title="Thêm giỏ hàng"
+                                            class="add-cart fl-left">Thêm giỏ hàng</a>
+                                        <a href="{{ Route('cart.buynow', $product->id) }}" title="Mua ngay"
+                                            class="buy-now fl-right">Mua
+                                            ngay</a>
+                                    @else
+                                        <a href="{{ Route('cart.get.add', $product->id) }}" style="pointer-events: none"
+                                            title="Thêm giỏ hàng" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                        <a href="{{ Route('cart.buynow', $product->id) }}" style="pointer-events: none"
+                                            title="Mua ngay" class="buy-now fl-right">Mua
+                                            ngay</a>
+                                    @endif
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+        @if ($list_best_sell->count() > 0)
+            <div class="section" id="feature-product-wp">
+                <div class="section-head">
+                    <h3 class="section-title">Sản phẩm bán chạy</h3>
+                </div>
+                <div class="section-detail">
+                    <ul class="list-item">
+                        @foreach ($list_best_sell as $product)
+                            <li>
+                                <a href="{{ Route('product.detail', [$product->slug, $product->id]) }}" title=""
+                                    class="thumb thumb-effect">
+                                    <img src="{{ asset($product->product_thumb) }}">
+                                </a>
+                                <a href="{{ Route('product.detail', [$product->slug, $product->id]) }}" title=""
+                                    class="product-name">{{ $product->product_title }}</a>
+                                <div class="price">
+                                    <span class="new">{{ currency_format($product->price, '.đ') }}</span>
+                                </div>
+                                @if ($product->tracking == 'out-of-stock')
+                                    <div class="sold-out">
+                                        <img src="{{ asset('images/hethang.png') }}" alt="">
+                                    </div>
+                                @endif
+                                <div class="action clearfix">
+                                    @if ($product->tracking != 'out-of-stock')
+                                        <a href="{{ Route('cart.get.add', $product->id) }}" title="Thêm giỏ hàng"
+                                            class="add-cart fl-left">Thêm giỏ hàng</a>
+                                        <a href="{{ Route('cart.buynow', $product->id) }}" title="Mua ngay"
+                                            class="buy-now fl-right">Mua
+                                            ngay</a>
+                                    @else
+                                        <a href="{{ Route('cart.get.add', $product->id) }}" style="pointer-events: none"
+                                            title="Thêm giỏ hàng" class="add-cart fl-left">Thêm giỏ hàng</a>
+                                        <a href="{{ Route('cart.buynow', $product->id) }}" style="pointer-events: none"
+                                            title="Mua ngay" class="buy-now fl-right">Mua
+                                            ngay</a>
+                                    @endif
+                                </div>
                             </li>
                         @endforeach
                     </ul>
@@ -105,8 +151,9 @@ use App\Product;
                     foreach ($list_product_cat as $item1) {
                         $data[] = $item1->id;
                     }
-                    $data[]=$item->id;
-                    $list_product = Product::whereIn('product_cat_id', $data)->where('status', '=', 'publish')
+                    $data[] = $item->id;
+                    $list_product = Product::whereIn('product_cat_id', $data)
+                        ->where('status', '=', 'publish')
                         ->limit(8)
                         ->get();
                 @endphp
@@ -128,24 +175,30 @@ use App\Product;
                                         <a href="{{ Route('product.detail', [$item->slug, $product->id]) }}" title=""
                                             class="product-name">{{ $product->product_title }}</a>
                                         <div class="price">
-                                            <span class="new">{{ currency_format($product->price,'.đ') }}</span>
+                                            <span class="new">{{ currency_format($product->price, '.đ') }}</span>
                                         </div>
-                                       @if ($product->tracking=='out-of-stock')
-                                       <div class="sold-out">
-                                        <img src="{{asset('images/hethang.png')}}" alt="">
-                                    </div>
-                                       @endif
-                                       <div class="action clearfix">
-                                        @if ($product->tracking!='out-of-stock')
-                                        <a href="{{ Route('cart.get.add', $product->id) }}" title="Thêm giỏ hàng" class="add-cart fl-left">Thêm giỏ hàng</a>
-                                        <a href="{{ Route('cart.buynow', $product->id) }}" title="Mua ngay" class="buy-now fl-right">Mua
-                                            ngay</a>
+                                        @if ($product->tracking == 'out-of-stock')
+                                            <div class="sold-out">
+                                                <img src="{{ asset('images/hethang.png') }}" alt="">
+                                            </div>
+                                        @endif
+                                        <div class="action clearfix">
+                                            @if ($product->tracking != 'out-of-stock')
+                                                <a href="{{ Route('cart.get.add', $product->id) }}" title="Thêm giỏ hàng"
+                                                    class="add-cart fl-left">Thêm giỏ hàng</a>
+                                                <a href="{{ Route('cart.buynow', $product->id) }}" title="Mua ngay"
+                                                    class="buy-now fl-right">Mua
+                                                    ngay</a>
                                             @else
-                                            <a href="{{ Route('cart.get.add', $product->id) }}" style="pointer-events: none" title="Thêm giỏ hàng" class="add-cart fl-left">Thêm giỏ hàng</a>
-                                            <a href="{{ Route('cart.buynow', $product->id) }}" style="pointer-events: none" title="Mua ngay" class="buy-now fl-right">Mua
-                                                ngay</a>
+                                                <a href="{{ Route('cart.get.add', $product->id) }}"
+                                                    style="pointer-events: none" title="Thêm giỏ hàng"
+                                                    class="add-cart fl-left">Thêm giỏ hàng</a>
+                                                <a href="{{ Route('cart.buynow', $product->id) }}"
+                                                    style="pointer-events: none" title="Mua ngay"
+                                                    class="buy-now fl-right">Mua
+                                                    ngay</a>
                                             @endif
-                                    </div>
+                                        </div>
                                     </li>
                                 @endforeach
                             </ul>
@@ -166,7 +219,7 @@ use App\Product;
             {{ get_cat($list_cat) }}
         </div>
     </div>
-    <div class="section" id="selling-wp">
+    {{-- <div class="section" id="selling-wp">
         <div class="section-head">
             <h3 class="section-title">Sản phẩm bán chạy</h3>
         </div>
@@ -191,6 +244,20 @@ use App\Product;
                 </ul>
             </div>
         @endif
+    </div> --}}
+    <div class="section" id="banner-wp">
+        <div class="section-detail">
+            <a href="#" title="" class="thumb">
+                <img src="{{ asset('images/banner.jpg') }}" alt="">
+            </a>
+        </div>
+    </div>
+    <div class="section" id="banner-wp">
+        <div class="section-detail">
+            <a href="#" title="" class="thumb">
+                <img src="{{ asset('images/banner3.jpg') }}" alt="">
+            </a>
+        </div>
     </div>
 @endsection
 
