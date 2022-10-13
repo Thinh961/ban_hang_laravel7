@@ -70,7 +70,7 @@
                         <div id="action-wp" class="fl-right">
                             <div id="advisory-wp" class="fl-left">
                                 <span class="title">Tư vấn</span>
-                                <span class="phone">0348259364</span>
+                                <span class="phone">0987654321</span>
                             </div>
                             <div id="btn-respon" class="fl-right"><i class="fa fa-bars" aria-hidden="true"></i></div>
                             <a href="{{ url('gio-hang') }}" title="giỏ hàng" id="cart-respon-wp" class="fl-right">
