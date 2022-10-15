@@ -21,7 +21,7 @@
 }
 #main-thumb .zoomWrapper img {
     width: 350px!important;
-    height: 265px!important;
+    /* height: 265px!important; */
 }
 #list-thumb {
     margin-top: 25px;
