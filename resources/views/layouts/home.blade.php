@@ -36,7 +36,7 @@
             <div id="header-wp">
                 <div id="head-top" class="clearfix">
                     <div class="wp-inner">
-                        <span id="payment-link" class="fl-left">thứ 2 - thứ 7 - 8:00am - 20:00pm</span>
+                        <span id="payment-link" class="fl-left">Chào mừng đến với Cityzens</span>
                         <div id="main-menu-wp" class="fl-right">
                             <ul id="main-menu" class="clearfix">
                                 <li>
@@ -70,7 +70,7 @@
                         <div id="action-wp" class="fl-right">
                             <div id="advisory-wp" class="fl-left">
                                 <span class="title">Tư vấn</span>
-                                <span class="phone">0348259364</span>
+                                <span class="phone">0987654321</span>
                             </div>
                             <div id="btn-respon" class="fl-right"><i class="fa fa-bars" aria-hidden="true"></i></div>
                             <a href="{{ url('gio-hang') }}" title="giỏ hàng" id="cart-respon-wp" class="fl-right">
