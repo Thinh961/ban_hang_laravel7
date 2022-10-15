@@ -36,7 +36,7 @@
             <div id="header-wp">
                 <div id="head-top" class="clearfix">
                     <div class="wp-inner">
-                        <span id="payment-link" class="fl-left">thứ 2 - thứ 7 - 8:00am - 20:00pm</span>
+                        <span id="payment-link" class="fl-left">Chào mừng đến với Cityzens</span>
                         <div id="main-menu-wp" class="fl-right">
                             <ul id="main-menu" class="clearfix">
                                 <li>
