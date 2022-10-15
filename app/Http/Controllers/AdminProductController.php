@@ -137,7 +137,7 @@ class AdminProductController extends Controller
 
     function update(ProductUpdateRequest $request, $id)
     {
-        $data = $request->except('_token','product_thumb_old','btn_update');
+        $data = $request->except('_token','product_thumb_old','btn_update', 'product_thumb_relative');
         $data['slug'] = Str::slug($request->product_title);
         if ($data['qty'] <= 0) {
             $data['tracking'] = 'out-of-stock';

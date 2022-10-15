@@ -205,13 +205,13 @@ p.moredetail {
     display: inline-block;
     padding: 10px 30px;
     font-size: 16px;
-    background: green;
+    background: #000;
     color: #fff;
     border-radius: 5px;
     text-transform: uppercase;
 }
 #detail-product-wp .add-cart:hover {
-    background: #006d00;
+    background: #565756;
 }
 #post-product-wp .section-title,
 #same-category-wp .section-title {
