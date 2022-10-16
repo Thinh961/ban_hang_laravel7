@@ -20,8 +20,8 @@
     border: 1px solid #d9d9d9;
 }
 #main-thumb .zoomWrapper img {
-    width: 350px!important;
-    height: 350px!important;
+    width: 350px !important;
+    height: 350px !important;
 }
 #list-thumb {
     margin-top: 25px;
