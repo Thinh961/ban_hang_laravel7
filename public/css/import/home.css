@@ -233,7 +233,8 @@
 #list-product-wp .list-item li .action .add-cart,
 #same-category-wp .list-item li .action .add-cart {
     border: 1px solid #333;
-    color: #333;
+    color: #fff;
+    background: #333;
 }
 #feature-product-wp .list-item li .action .buy-now,
 #list-product-wp .list-item li .action .buy-now,
@@ -250,7 +251,7 @@
 #feature-product-wp .list-item li .action .add-cart:hover,
 #list-product-wp .list-item li .action .add-cart:hover,
 #same-category-wp .list-item li .action .add-cart:hover {
-    background: #333;
+    background: rgb(117, 114, 114);
     color: #fff;
 }
 #list-product-wp .section-detail .list-item li {
