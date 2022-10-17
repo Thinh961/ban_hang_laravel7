@@ -123,7 +123,7 @@
                                     </td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>
-                                        <a href="{{ Route('admin.order.edit', $item->id) }}" class="" type="button"
+                                        <a href="{{ Route('admin.order.edit', $item->id) }}" class="btn btn-outline-success" type="button"
                                             data-toggle="tooltip" data-placement="top" title="Edit">Chi tiết</a>
                                     </td>
                                 </tr>
